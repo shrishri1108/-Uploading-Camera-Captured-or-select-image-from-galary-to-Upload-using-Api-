@@ -42,7 +42,8 @@ c>> In res -> xml  . Create  a file_paths.xml file  and paste following code int
           
           </paths>
 
-2>   In   Project-level  Build.gradle file -->  Inside allprojects { }          
+2>   In   Project-level  Build.gradle file -->  Inside allprojects { }      
+
           repositories {
             google()
             jcenter()
@@ -58,8 +59,8 @@ c>> In res -> xml  . Create  a file_paths.xml file  and paste following code int
 
 Steps ===>> 
 
-
 1>      In  onClick select btn's called  funtion  ()
+       
            image_type_gallery = 1;
            ImagePicker.with( ReportDetailsActivity.this)
                         .crop()	    			//Crop image(Optional), Check Customization for more option
