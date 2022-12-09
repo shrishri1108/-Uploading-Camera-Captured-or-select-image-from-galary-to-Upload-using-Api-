@@ -55,7 +55,8 @@ c>> In res -> xml  . Create  a file_paths.xml file  and paste following code int
              }
            }
  
-3>  In   Module-level Build.gradle file   --> add following dependency into it .            
+3>  In   Module-level Build.gradle file   --> add following dependency into it .         
+
            implementation 'com.github.dhaval2404:imagepicker:2.1'
 
 
