@@ -6,10 +6,12 @@
  1> In manifest file 
 
 a>>  
-          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-              <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-b>> In <application >  tag         
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+b>> In <application >  tag 
+
          <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -89,9 +91,10 @@ Steps ===>>
               }
 
 3>> Create a GetFileFromUriUsingBufferReader  Kotlin class  File  and write  following code into that 
-          public class GetFileFromUriUsingBufferReader{
+
+            public class GetFileFromUriUsingBufferReader{
                fun getImageFile(mContext: Activity?, documentUri: Uri): File {
-                   val inputStream = mContext?.contentResolver?.openInputStream(documentUri)
+               val inputStream = mContext?.contentResolver?.openInputStream(documentUri)
                    var file =  File("")
                    inputStream.use { input ->
                        file =
@@ -113,7 +116,8 @@ Steps ===>>
                      return file
               }
 
-4>> outside  OnActivityResult() create a void AddImage()  as following ---    
+4>> outside  OnActivityResult() create a void AddImage()  as following ---
+
           private void AddImage(File file2) {
               //  Call your  corresponding Api  using Retrofit   .   Following example  is goods   --->   
               
