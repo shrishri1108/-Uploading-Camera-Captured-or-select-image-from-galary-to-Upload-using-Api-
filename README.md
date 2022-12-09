@@ -85,9 +85,8 @@ Steps ===>>
                 else {
                     Toast.makeText(this, " Action Cancelled .", Toast.LENGTH_SHORT).show();
                 }
-  
+                
               }
-    
 
 3>> Create a GetFileFromUriUsingBufferReader  Kotlin class  File  and write  following code into that 
           public class GetFileFromUriUsingBufferReader{
@@ -134,7 +133,7 @@ Steps ===>>
                       }
      
                   }
-   
+        
                   @Override
                   public void onError(Call<Upload_astrologer_imageBean> call, Throwable t) {
                       Log.e("Data11", "abc " + t.getMessage());
