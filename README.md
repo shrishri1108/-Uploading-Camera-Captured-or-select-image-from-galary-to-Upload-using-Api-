@@ -52,10 +52,16 @@
              }
            }
  
-   3>  Inle-level Build.gradle file   --> add following dependency into it . 
-
+   3>  In   Module-level Build.gradle file   --> add following dependency into it . 
+           
+           implementation 'com.github.dhaval2404:imagepicker:2.1'
+          
+          
 Steps ===>> 
-   1>      In  onClick select btn's called  funtion  ()
+
+
+
+1>      In  onClick select btn's called  funtion  ()
    
            image_type_gallery = 1;
 //                                             File image=
@@ -68,8 +74,8 @@ Steps ===>>
                                          }
                                      });
                                      
-    2>>  Outside onCreate  Method  Override  onActivityResult() as following              
-                                     
+2>>  Outside onCreate  Method  Override  onActivityResult() as following              
+      
            if(image_type_gallery ==1 ) {
                 if(resultCode== RESULT_OK) {
                     File imageUriTOFile = new File(data.getData().toString());
@@ -86,64 +92,62 @@ Steps ===>>
   
               }
     
-    
-    
-    3>> Create a GetFileFromUriUsingBufferReader  Kotlin class  File  and write  following code into that 
-   
 
+3>> Create a GetFileFromUriUsingBufferReader  Kotlin class  File  and write  following code into that 
+                   
           public class GetFileFromUriUsingBufferReader{
-          fun getImageFile(mContext: Activity?, documentUri: Uri): File {
-              val inputStream = mContext?.contentResolver?.openInputStream(documentUri)
-              var file =  File("")
-              inputStream.use { input ->
-                  file =
-                      File(mContext?.cacheDir, System.currentTimeMillis().toString()+".jpg")
-                  FileOutputStream(file).use { output ->
-                      val buffer =
-                          ByteArray(1 * 1024) // or other buffer size
-                      var read: Int = -1
-                      while (input?.read(buffer).also {
-                              if (it != null) {
-                                  read = it
-                              }
-                          } != -1) {
-                          output.write(buffer, 0, read)
-                    }
-                   output.flush()
-                  }
-                }
-                return file
+               fun getImageFile(mContext: Activity?, documentUri: Uri): File {
+                   val inputStream = mContext?.contentResolver?.openInputStream(documentUri)
+                   var file =  File("")
+                   inputStream.use { input ->
+                       file =
+                           File(mContext?.cacheDir, System.currentTimeMillis().toString()+".jpg")
+                       FileOutputStream(file).use { output ->
+                           val buffer =
+                               ByteArray(1 * 1024) // or other buffer size
+                           var read: Int = -1
+                           while (input?.read(buffer).also {
+                                   if (it != null) {
+                                       read = it
+                                   }
+                               } != -1) {
+                               output.write(buffer, 0, read)
+                         }
+                        output.flush()
+                       }
+                     }
+                     return file
               }
 
-    4>> outside  OnActivityResult() create a void AddImage()  as following ---    
+4>> outside  OnActivityResult() create a void AddImage()  as following ---    
           
           private void AddImage(File file2) {
-
+          
               //  Call your  corresponding Api  using Retrofit   .   Following example  is goods   --->   
-
+              
               RestClient.getInst().upload_a_image(file2).enqueue(new HttpCallback<Upload_astrologer_imageBean>() {
                   @Override
                   public void onSuccess(Call<Upload_astrologer_imageBean> call, Response<Upload_astrologer_imageBean> response) {
-
+                  
                       if (response.body().getStatus()) {
                           Log.e("Data1myImgs1", "abc " + response.body().getFile_img());
                           imageFile = response.body().getFile_img();
                           dialogLoader.hideProgressDialog();
-
-
+                          
+                          
                       } else {
                           Log.e("Data11", "abc " + file2.getAbsolutePath());
                           // dialogLoader.hideProgressDialog();
                       }
-
+     
                   }
-
+   
                   @Override
                   public void onError(Call<Upload_astrologer_imageBean> call, Throwable t) {
                       Log.e("Data11", "abc " + t.getMessage());
                       dialogLoader.hideProgressDialog();
-
+     
                   }
                });
                }
-
+       
