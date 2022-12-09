@@ -2,13 +2,13 @@
 
 ##@ Prerequistics
 
+
  1> In manifest file 
     a>>  
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
               <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     
-    b>> In <application >  tag 
-        
+    b>> In <application >  tag         
          <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -62,20 +62,16 @@ Steps ===>>
 
 
 1>      In  onClick select btn's called  funtion  ()
-   
            image_type_gallery = 1;
-//                                             File image=
-//                                             CropImage.activity(null).setGuidelines(CropImageView.Guidelines.ON).start(ReportDetailsActivity.this);
-                                             ImagePicker.with( ReportDetailsActivity.this)
-                                                     .crop()	    			//Crop image(Optional), Check Customization for more option
-                                                     .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                                                     .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-                                                     .start();
-                                         }
-                                     });
+           ImagePicker.with( ReportDetailsActivity.this)
+                        .crop()	    			//Crop image(Optional), Check Customization for more option
+                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .start();
+                        }
+                    });
                                      
-2>>  Outside onCreate  Method  Override  onActivityResult() as following              
-      
+2>>  Outside onCreate  Method  Override  onActivityResult() as following                    
            if(image_type_gallery ==1 ) {
                 if(resultCode== RESULT_OK) {
                     File imageUriTOFile = new File(data.getData().toString());
@@ -94,7 +90,6 @@ Steps ===>>
     
 
 3>> Create a GetFileFromUriUsingBufferReader  Kotlin class  File  and write  following code into that 
-                   
           public class GetFileFromUriUsingBufferReader{
                fun getImageFile(mContext: Activity?, documentUri: Uri): File {
                    val inputStream = mContext?.contentResolver?.openInputStream(documentUri)
@@ -120,9 +115,7 @@ Steps ===>>
               }
 
 4>> outside  OnActivityResult() create a void AddImage()  as following ---    
-          
           private void AddImage(File file2) {
-          
               //  Call your  corresponding Api  using Retrofit   .   Following example  is goods   --->   
               
               RestClient.getInst().upload_a_image(file2).enqueue(new HttpCallback<Upload_astrologer_imageBean>() {
