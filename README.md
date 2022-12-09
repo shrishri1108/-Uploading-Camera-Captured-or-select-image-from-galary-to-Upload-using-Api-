@@ -71,7 +71,8 @@ Steps ===>>
                     });
 
 2>>  Outside onCreate  Method  Override  onActivityResult() as following                    
-           if(image_type_gallery ==1 ) {
+
+             if(image_type_gallery ==1 ) {
                 if(resultCode== RESULT_OK) {
                     File imageUriTOFile = new File(data.getData().toString());
                     Toast.makeText(this, " "+imageUriTOFile.getAbsolutePath(), Toast.LENGTH_SHORT).show();
