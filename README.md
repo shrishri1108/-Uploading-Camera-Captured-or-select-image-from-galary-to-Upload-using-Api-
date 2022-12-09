@@ -4,11 +4,12 @@
 
 
  1> In manifest file 
-    a>>  
+
+a>>  
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
               <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    
-    b>> In <application >  tag         
+
+b>> In <application >  tag         
          <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -21,28 +22,27 @@
                 tools:replace="android:resource" />
           </provider>
 
-      c>> In res -> xml  . Create  a file_paths.xml file  and paste following code into it . 
+c>> In res -> xml  . Create  a file_paths.xml file  and paste following code into it . 
               <?xml version="1.0" encoding="utf-8"?>
          <paths>
                 <external-path name="my_images" path="Android/data/<write_your_package_here>" />
                    <external-path
                     name="external_files"
                     path="." />
-
+       
                 <external-path name="external_files" path="."/>
- 
+      
                 <external-path name="external" path="." />
-
+            
                <cache-path name="cache" path="." />
-
+          
                <external-cache-path name="external_cache" path="." />
-
+           
                <files-path name="files" path="." />
-
+          
           </paths>
 
-  2>   In   Project-level  Build.gradle file -->  Inside allprojects { }
-          
+2>   In   Project-level  Build.gradle file -->  Inside allprojects { }          
           repositories {
             google()
             jcenter()
@@ -52,13 +52,11 @@
              }
            }
  
-   3>  In   Module-level Build.gradle file   --> add following dependency into it . 
-           
+3>  In   Module-level Build.gradle file   --> add following dependency into it .            
            implementation 'com.github.dhaval2404:imagepicker:2.1'
-          
-          
-Steps ===>> 
 
+
+Steps ===>> 
 
 
 1>      In  onClick select btn's called  funtion  ()
@@ -70,7 +68,7 @@ Steps ===>>
                         .start();
                         }
                     });
-                                     
+
 2>>  Outside onCreate  Method  Override  onActivityResult() as following                    
            if(image_type_gallery ==1 ) {
                 if(resultCode== RESULT_OK) {
